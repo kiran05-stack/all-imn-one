@@ -1,0 +1,103 @@
+
+Evaluate (1/2) using basic definition and verify the same by direct command.
+/* To evaluate the value of Γ(1/2) using its definition */
+n: 1/2$
+f(x) := exp(-x) * x^(n - 1)$
+f1: integrate(f(x), x, 0, inf)$
+print("The value of Γ(", n, ") using its definition is =", f1)$
+
+/* To evaluate the value of Γ(1/2) by direct command */
+f2: gamma(1/2)$
+print("The value of Γ(", n, ") using direct code is =", f2)$
+
+
+
+Example 3: Evaluate the value of ẞ(1,1) using its basic definition and verify the same by direct command.
+
+WxMaxima code:/* To evaluate the value of ẞ(m,n) using its definition */
+m: 1$
+n: 1$
+f(x) := x^(m - 1) * (1 - x)^(n - 1)$
+f1: integrate(f(x), x, 0, 1)$
+print("The value of ẞ(", m, ",", n, ") using its basic definition is =", f1)$
+
+/* To evaluate the value of ẞ(m,n) by direct command */
+f2: beta(1, 1)$
+print("The value of ẞ(", m, ",", n, ") using direct command is =", f2)$
+
+
+Example 5: Evaluate √cotx dx + √tanx dx using Beta Gamma functions.
+
+WxMaxima code:
+kill(all)$
+
+assume(cos(x) > 0)$
+assume(sin(x) > 0)$
+
+I1: integrate(sqrt(tan(x)), x, 0, %pi/2)$
+I1_bg: ev(I1, betagamma)$
+
+I2: integrate(sqrt(cot(x)), x, 0, %pi/2)$
+I2_bg: ev(I2, betagamma)$
+
+Integral: I1_bg + I2_bg$
+
+print("The required value of the integral is =", Integral)$
+
+
+
+Example 6: Evaluate fi vsinx dx x using Beta Gamma functions.
+
+/* Gamma Function based evaluation */
+
+kill(all)$
+
+/* Step 1: Evaluate ∫ √(sin(x)) dx from 0 to π/2 */
+I1: integrate(sqrt(sin(x)), x, 0, %pi/2)$
+I1_bg: ev(I1, betagamma)$
+
+/* Step 2: Evaluate ∫ √(1/sin(x)) dx from 0 to π/2 */
+I2: integrate(sqrt(1/sin(x)), x, 0, %pi/2)$
+I2_bg: ev(I2, betagamma)$
+
+/* Optional: Total or print both */
+print("I1 =", I1_bg)$
+print("I2 =", I2_bg)$
+
+Example 7: Evaluate fo√xex dx x fox dx using Beta Gamma functions.
+
+WxMaxima code:/* Step 1: Define functions and integrate using Gamma functions */
+kill(all)$
+
+f1(x) := sqrt(x) * exp(-x^2)$
+f2(x) := exp(-x^2) / sqrt(x)$
+
+I1: integrate(f1(x), x, 0, inf)$
+I1_g: ev(I1, gammas)$
+
+I2: integrate(f2(x), x, 0, inf)$
+I2_g: ev(I2, gammas)$
+
+/* Step 2: Evaluate using gamma values directly */
+kill(all)$
+
+Integral1: (1/2) * gamma(3/4)$
+Integral2: (1/2) * gamma(1/4)$
+Product: Integral1 * Integral2$
+
+BetaForm: beta(1/4, 3/4) / 4$
+
+print("The required value of the integral is =", Product)$
+print("Using Beta function relation =", BetaForm)$
+
+
+
+
+Example 8: Evaluate fo (1+x)19+ (1+x)19 dx using Beta Gamma functions.
+kill(all)$
+
+Integral1: beta(11, 8)$
+Integral2: beta(14, 5)$
+Integral: Integral1 + Integral2$
+
+print("The required value of the integral is =", Integral)$

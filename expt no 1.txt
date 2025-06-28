@@ -1,0 +1,112 @@
+Example 1: Evaluate So x2y3 dydx.
+WxMaxima code:
+f: x^2*y^3;
+fl :integrate(integrate(f,y, 1,2), x,0,3);
+print("the value of double integral is", f1)
+
+
+/* Evaluate area of unit square using double integral */
+f1: integrate(integrate(1, y, 0, 1), x, 0, 1)$
+print("The value of the double integral is:", f1)$
+
+/* Plotting the region of integration (unit square) */
+wxdraw2d(
+  grid=true,
+  xaxis=true,
+  yaxis=true,
+  xrange=[-1, 2],
+  yrange=[-1, 2],
+  color=blue,
+  fill_color=light_blue,
+  filled_polygon([[0,0],[1,0],[1,1],[0,1]])
+)$
+
+
+
+Triple integrals with constant limits:
+
+To evaluate the Triple integrals with constant limits of the form
+
+2=b Sx1a yc 21g f(x, y, z)dzdydx, D
+
+/* Define the function */
+f(x, y, z) := x * y * z$
+
+/* Triple integration */
+result: integrate(integrate(integrate(f(x, y, z), z, 0, 1), y, 0, 1), x, 0, 1)$
+
+/* Display the result */
+print("The value of the triple integral is:", result)$
+
+
+Example 5: Evaluate so so f(x + y + z)dzdydx.
+/* Define the function */
+f: x + y + z$
+
+/* Triple integration */
+triple_integral: integrate(integrate(integrate(f, z, 0, 1), y, 0, 1), x, 0, 1)$
+
+/* Display the result */
+print("The value of the triple integral =", triple_integral)$
+
+
+Triple integrals with constant limits:
+
+To evaluate the Triple integrals with constant limits of the form
+
+x1=a Jy₁=c f(x, y, z)dzdydx,
+
+WxMaxima
+/* Define the function */
+f(x, y, z) := x + y + z$
+
+/* Triple integration with constant limits */
+triple_integral: integrate(
+                   integrate(
+                     integrate(f(x, y, z), z, 0, 1),
+                   y, 0, 1),
+                 x, 0, 1)$
+
+/* Display the result */
+print("The value of triple integral =", triple_integral)$
+
+
+
+Volume of the cuboid by triple integral:
+
+Volume of the cuboid with length a unis, breadth & units and height e units using triple
+
+integral is dz dydx,
+
+The WxMaxima command is: Integrate (Integrate(integrate(1. z. 0. c),y. O, b), x, 0, 0)
+
+Example 7: Find the volume of the cuboid with length 2 units, breadth J units and height units using triple integral.
+
+WxMaxima code
+
+/* Triple integral to calculate volume of a cuboid */
+Volume: integrate(
+           integrate(
+             integrate(1, z, 0, 4),
+           y, 0, 3),
+         x, 0, 2)$
+
+/* Print the result */
+print("The value of the triple integral (volume) =", Volume)$
+
+Double integrals with variable limits:
+
+To evaluate the double integrals with variable limits which is of the form (x) f(x, y)dydx where a, b are constants and f₁(x). f(x) are functions of x, x=aJy=f(x)
+
+The WxMaxima code
+/* Define the function */
+f(x, y) := x^2 + y^2$
+
+/* Perform double integration: y from x to sqrt(x), x from 0 to 1 */
+fl: integrate(
+      integrate(f(x, y), y, x, sqrt(x)),
+    x, 0, 1)$
+
+/* Display the result */
+print("The value of the double integral is", fl)$
+
